@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import ProductService from "../services/product.js";
 
 export default class ProductController {
@@ -31,6 +32,13 @@ export default class ProductController {
 
   static async createProduct(req, res) {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        res.status(422).json({ errors: errors.array() });
+        return;
+      }
+
       const result = await ProductService.createProduct(req.body);
 
       res.status(201).json({
@@ -44,6 +52,13 @@ export default class ProductController {
 
   static async updateProduct(req, res) {
     try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        res.status(422).json({ errors: errors.array() });
+        return;
+      }
+
       const { id } = req.params;
 
       const product = await ProductService.updateProduct(req.body, id);

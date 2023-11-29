@@ -5,6 +5,7 @@ npm init
 
 # install dependencies
 npm install express
+npm install express-validator
 npm install --save-dev nodemon
 npm install --save-dev prisma
 
