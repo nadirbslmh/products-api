@@ -2,6 +2,13 @@
 
 RESTful API application for managing products. Written in NodeJS with Express Web Framework.
 
+## Notes
+
+There are two branches in this repository.
+
+- `main`: contains RESTful API with CRUD and authentication feature.
+- `crud`: contains RESTful API with CRUD feature.
+
 ## How to Use
 
 1. Clone this repository.
@@ -18,7 +25,7 @@ CREATE DATABASE productsdb;
 cp .env.example .env
 ```
 
-4. Fill the database configuration inside `.env` file.
+4. Fill the database configuration and JWT secret key inside `.env` file.
 
 5. Install the dependencies.
 

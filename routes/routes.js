@@ -5,15 +5,12 @@ import auth from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.get("", auth.jwtMiddleware, ProductController.getProducts);
-router.get("/:id", auth.jwtMiddleware, ProductController.getProductByID);
-router.post("", validate, auth.jwtMiddleware, ProductController.createProduct);
-router.put(
-  "/:id",
-  validate,
-  auth.jwtMiddleware,
-  ProductController.updateProduct
-);
-router.delete("/:id", auth.jwtMiddleware, ProductController.deleteProduct);
+router.use(auth.jwtMiddleware);
+
+router.get("", ProductController.getProducts);
+router.get("/:id", ProductController.getProductByID);
+router.post("", validate, ProductController.createProduct);
+router.put("/:id", validate, ProductController.updateProduct);
+router.delete("/:id", ProductController.deleteProduct);
 
 export default router;
